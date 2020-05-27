@@ -68,6 +68,29 @@ class Index extends Base {
     }
 
 
+    public function checkCode() {
+        $code = input('post.code','');
+        checkPost(['code'=>$code]);
+        $whereCode = [
+            ['code','=',$code]
+        ];
+        try {
+            $code_exist = Db::table('mp_qrcode')->where($whereCode)->find();
+            if(!$code_exist) {
+                return ajax('',101);
+            }
+            if((time()-$code_exist['create_time']) > 120) {
+                return ajax('',102);
+            }else {
+                return ajax('',100);
+            }
+        } catch (\Exception $e) {
+            return ajax($e->getMessage(), -1);
+        }
+
+    }
+
+
     //刷新二维码
     public function refreshQrode() {
         if(request()->isPost()) {
