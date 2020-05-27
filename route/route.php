@@ -13,6 +13,8 @@ Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
 
+Route::rule('code','api/index/index');
+
 return [
 
 ];

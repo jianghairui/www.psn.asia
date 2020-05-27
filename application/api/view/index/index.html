@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="UTF-8">
+    <title>防伪查询</title>
+    <style>
+        .bg-green{ color:green;}
+        .bg-red { color:red;}
+        input{width: 90%;margin-left: 5%;height: 30px;margin-bottom: 10px}
+        button{width: 90%;margin-left: 5%;height: 35px;margin-bottom: 10px;background: #0e90d2}
+        span {margin-left: 5%;font-size: 20px}
+    </style>
+</head>
+<body>
+    <input type="text" name="code" id="code" value="{$info.code}" placeholder="" /><br>
+    <button type="button" id="button">查询</button>
+    <div id="result">
+        {if (time()-$info['create_time'])>120}
+        <span class="bg-red">已过期</span>
+        {else /}
+        <span class="bg-green">正常</span>
+        {/if}
+    </div>
+<script src="/lib/jquery/1.9.1/jquery.js"></script>
+<script>
+    $("#button").click(function() {
+        var code = $("#code").val();
+        $.ajax({
+            type: 'POST',
+            url: "{:url('Index/chaxun')}",
+            dataType: 'json',
+            data:{code:code},
+            success: function(data){
+                if(data.code === 1) {
+                    $("#result").html('<span class="bg-green">正常</span>');
+                }else if (data.code === 2) {
+                    $("#result").html('<span class="bg-red">编号不存在</span>');
+                }else if(data.code === 3) {
+                    $("#result").html('<span class="bg-red">已过期</span>');
+                }else {
+                    $("#result").html('<span class="bg-red">' + data.data + '</span>');
+                }
+            },
+            error:function(data) {
+                alert('接口请求失败');
+            },
+        });
+    })
+</script>
+</body>
+</html>
