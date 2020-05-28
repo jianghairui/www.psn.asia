@@ -10,10 +10,13 @@
 // +----------------------------------------------------------------------
 use think\exception\HttpResponseException;
 // 应用公共文件
-function ajax($data = [], $code = 1, $httpCode = 200, $header = [])
+function ajax($data = [], $code = 1,$message = '', $httpCode = 200, $header = [])
 {
+    if(!$message) {
+        $message = config('code.' . $code);
+    }
     $ret = [
-        'message' => config('code.' . $code),
+        'message' => $message,
         'code' => $code,
         'data' => $data,
     ];
