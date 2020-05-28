@@ -362,21 +362,21 @@ class Index extends Base {
         $extrainfo = null;
 //左上角
         imagefttext($qrcode, $fontSize, 90, $x_1+$l2-3, $y_2+2, $black, $font, $text2);
-        imagefttext($qrcode, $fontSize, 270, $x_2+3, $y_1+$l2-2, $black, $font, $text2);
+        imagefttext($qrcode, $fontSize, 270, $x_2+7, $y_1+$l2-2, $black, $font, $text2);
 
         imagefttext($qrcode, $fontSize, 0, $x_1-2, $y_1+$l2-2, $black, $font, $text1);
-        imagefttext($qrcode, $fontSize, 180, $x_2+14, $y_2+2, $black, $font, $text1);
+        imagefttext($qrcode, $fontSize, 180, $x_2+17, $y_2+2, $black, $font, $text1);
 //右上角
         imagefttext($qrcode, $fontSize, 90, $x_3+$l2-2, $y_2+2, $black, $font, $text2);
-        imagefttext($qrcode, $fontSize, 270, $x_4+3, $y_1+$l2-2, $black, $font, $text2);
+        imagefttext($qrcode, $fontSize, 270, $x_4+7, $y_1+$l2-2, $black, $font, $text2);
 
         imagefttext($qrcode, $fontSize, 0, $x_3, $y_1+$l2-2, $black, $font, $text1);
-        imagefttext($qrcode, $fontSize, 180, $x_4+14, $y_2+2, $black, $font, $text1);
+        imagefttext($qrcode, $fontSize, 180, $x_4+17, $y_2+2, $black, $font, $text1);
 //左下角
         imagefttext($qrcode, $fontSize, 90, $x_1+$l2-3, $y_4+2, $black, $font, $text2);
-        imagefttext($qrcode, $fontSize, 270, $x_2+3, $y_3+$l2-2, $black, $font, $text2);
+        imagefttext($qrcode, $fontSize, 270, $x_2+7, $y_3+$l2-2, $black, $font, $text2);
         imagefttext($qrcode, $fontSize, 0, $x_1-2, $x_3+$l2-2, $black, $font, $text1);
-        imagefttext($qrcode, $fontSize, 180, $x_2+14, $x_4+3, $black, $font, $text1);
+        imagefttext($qrcode, $fontSize, 180, $x_2+17, $x_4+3, $black, $font, $text1);
 
         imagecopyresampled($bg,$qrcode,50,0,0,0,imagesx($qrcode),imagesy($qrcode),imagesx($qrcode),imagesy($qrcode));
 
